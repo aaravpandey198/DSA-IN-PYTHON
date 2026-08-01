@@ -1,6 +1,6 @@
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        s = set(nums)#code was slow to run
+        s = set(nums)#code was too slow to run
         missing = []
 
         for i in range(1, len(nums) + 1):
