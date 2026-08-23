@@ -8,7 +8,8 @@ class Solution:
 
         i = 0
 
-        while i < len(nums):
+        while i<len(nums):
+            
             if nums[i] == 0:
                 break
             i += 1
@@ -18,9 +19,10 @@ class Solution:
 
         j = i + 1
 
-        while j < len(nums):
+        while j<len(nums):
+            
             if nums[j] != 0:
-                nums[i], nums[j] = nums[j], nums[i]
+                nums[i],nums[j] = nums[j],nums[i]
                 i += 1
 
             j += 1
