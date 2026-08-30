@@ -1,5 +1,6 @@
 class Solution:
     def numberOfSteps(self, num: int) -> int:
+        
         steps = 0
         
         while num != 0:
