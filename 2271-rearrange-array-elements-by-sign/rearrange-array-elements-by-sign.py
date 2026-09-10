@@ -4,12 +4,14 @@ class Solution:
         neg = []
 
         for num in nums:
+            
             if num > 0:
                 pos.append(num)
             else:
                 neg.append(num)
 
         for i in range(len(pos)):
+            
             nums[2 * i] = pos[i]
             nums[2 * i + 1] = neg[i]
 
