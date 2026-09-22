@@ -1,14 +1,21 @@
 class Solution:
     def search(self, nums: list[int], target: int) -> int:
-        n = len(nums)
-        low = 0
-        high = n - 1
-        while low <= high:
+        def binary(arr,low,high,target):
+            if low > high:
+                return -1
+            
             mid = int((low + high) / 2)
-            if nums[mid] == target:
+
+            if arr[mid] == target:
                 return mid
-            elif target > nums[mid]:
-                low = mid + 1
-            else:
-                high = mid - 1
-        return -1
+
+            elif target > arr[mid]:
+                return binary(arr,mid+1,high,target)
+
+            return binary(arr,low,mid - 1,target)
+        low= 0
+        high = len(nums) - 1
+        return binary(nums,low,high,target)
+
+        
+
