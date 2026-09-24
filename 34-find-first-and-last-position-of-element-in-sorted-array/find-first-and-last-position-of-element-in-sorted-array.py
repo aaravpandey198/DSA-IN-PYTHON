@@ -1,43 +1,42 @@
 class Solution:
     def searchRange(self, nums: list[int], target: int) -> list[int]:
 
-        def upperbound(arr, x):
-            low = 0
-            n = len(arr)
-            high = n - 1
-            ans = n
+        low = 0
+        high = len(nums) - 1
 
-            while low <= high:
-                mid = (low + high) // 2
+        while low <= high:
+            mid = (low + high) // 2
+            if nums[mid] == target:
+                left = mid
+                l = low
+                r = mid - 1
 
-                if arr[mid] > x:
-                    ans = mid
-                    high = mid - 1
-                else:
-                    low = mid + 1
+                while l <= r:
+                    m = (l + r) // 2
+                    if nums[m] == target:
+                        left = m
+                        r = m - 1
+                    else:
+                        l = m + 1
 
-            return ans
+                right = mid
+                l = mid + 1
+                r = high
 
-        def lowerbound(arr, x):
-            low = 0
-            n = len(arr)
-            high = n - 1
-            ans = n
+                while l <= r:
+                    m = (l + r) // 2
+                    if nums[m] == target:
+                        right = m
+                        l = m + 1
+                    else:
+                        r = m - 1
 
-            while low <= high:
-                mid = (low + high) // 2
+                return [left, right]
 
-                if arr[mid] >= x:
-                    ans = mid
-                    high = mid - 1
-                else:
-                    low = mid + 1
+            elif nums[mid] < target:
+                low = mid + 1
 
-            return ans
+            else:
+                high = mid - 1
 
-        lb = lowerbound(nums, target)
-
-        if lb == len(nums) or nums[lb] != target:
-            return [-1, -1]
-
-        return [lb, upperbound(nums, target) - 1]
+        return [-1, -1]
