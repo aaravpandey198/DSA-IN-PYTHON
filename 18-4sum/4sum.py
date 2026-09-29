@@ -32,6 +32,7 @@ class Solution:
 
                     elif total < target:
                         left += 1
+                    
                     else:
                         right -= 1
 
