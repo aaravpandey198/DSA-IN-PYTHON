@@ -1,14 +1,15 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        count = {}
 
-        for i in magazine:
-            count[i] = count.get(i, 0) + 1
+        for i in range(len(ransomNote)):
+            char = ransomNote[i]
 
-        for j in ransomNote:
-            if count.get(j, 0) == 0:
+            matchingIndex = magazine.find(char)
+
+            if matchingIndex == -1:
                 return False
 
-            count[j] -= 1
+            magazine = magazine[:matchingIndex] + magazine[matchingIndex + 1:]
 
         return True
+        
