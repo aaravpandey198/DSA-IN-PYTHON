@@ -1,19 +1,16 @@
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        n = len(nums)
+        low, high = 0, len(nums) - 1
 
-        if n == 1:
-            return nums[0]
+        while low < high:
+            mid = (low + high) // 2
 
-        for i in range(n):
-            if i == 0:
-                if nums[i] != nums[i + 1]:
-                    return nums[i]
+            if mid % 2 == 1:
+                mid -= 1
 
-            elif i == n - 1:
-                if nums[i] != nums[i - 1]:
-                    return nums[i]
-
+            if nums[mid] == nums[mid + 1]:
+                low = mid + 2
             else:
-                if nums[i] != nums[i + 1] and nums[i] != nums[i - 1]:
-                    return nums[i]
+                high = mid
+
+        return nums[low]
