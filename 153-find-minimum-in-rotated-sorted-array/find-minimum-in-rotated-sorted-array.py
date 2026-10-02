@@ -5,13 +5,11 @@ class Solution:
 
         while low <= high:
             mid = (low + high) // 2
-
-            # Left half is sorted
+            
             if nums[low] <= nums[mid]:
                 ans = min(ans, nums[low])
                 low = mid + 1
 
-            # Right half contains the minimum
             else:
                 ans = min(ans, nums[mid])
                 high = mid - 1
