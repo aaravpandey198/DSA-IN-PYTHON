@@ -1,23 +1,6 @@
 class Solution:
     def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
 
-        def possible(arr, day, m, k):
-            count = 0
-            bouquets = 0
-
-            for i in range(len(arr)):
-
-                if arr[i] <= day:
-                    count += 1
-
-                else:
-                    bouquets += count // k
-                    count = 0
-
-            bouquets += count // k
-
-            return bouquets >= m
-
         if m * k > len(bloomDay):
             return -1
 
@@ -28,7 +11,20 @@ class Solution:
 
             mid = (low + high) // 2
 
-            if possible(bloomDay, mid, m, k):
+            flowers = 0
+            bouquets = 0
+
+            for i in range(len(bloomDay)):
+
+                if bloomDay[i] <= mid:
+                    flowers += 1
+                else:
+                    bouquets += flowers // k
+                    flowers = 0
+
+            bouquets += flowers // k
+
+            if bouquets >= m:
                 high = mid
             else:
                 low = mid + 1
