@@ -1,7 +1,6 @@
 
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
-        #cyclic sort use kia
         n = len(nums)
         i = 0
 
