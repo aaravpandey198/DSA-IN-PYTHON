@@ -1,10 +1,16 @@
+
 class Solution:
     def romanToInt(self, s: str) -> int:
-        integer = 0
-        d = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
-        s = s.replace("IV","IIII").replace("IX","VIIII")
-        s = s.replace("XL", "XXXX").replace("XC", "LXXXX")
-        s = s.replace("CD", "CCCC").replace("CM", "DCCCC")
-        for char in s:
-            integer+=d[char]
-        return integer
+        result = 0
+        roman = {
+            'I': 1, 'V': 5, 'X': 10,
+            'L': 50, 'C': 100, 'D': 500, 'M': 1000
+        }
+
+        for i in range(len(s)):
+            if i + 1 < len(s) and roman[s[i]] < roman[s[i + 1]]:
+                result -= roman[s[i]]
+            else:
+                result += roman[s[i]]
+
+        return result
