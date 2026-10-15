@@ -4,14 +4,17 @@
 #         self.val = x
 #         self.next = None
 
+
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         temp = head
         seen = []
-        while temp :
+
+        while temp:
             if temp in seen:
                 return True
+
             seen.append(temp)
             temp = temp.next
+
         return False
-        
