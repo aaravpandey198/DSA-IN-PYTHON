@@ -4,16 +4,25 @@
 #         self.val = x
 #         self.next = None
 
+
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        temp = head
-        seen = []
-        
-        while temp:
-            
-            if temp in seen:
-                return temp
-            seen.append(temp)
-            temp = temp.next
-        
+        slow = head
+        fast = head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                slow = head
+
+                while slow != fast:
+                    slow = slow.next
+                    fast = fast.next
+
+                return slow
+
         return None
+
+
