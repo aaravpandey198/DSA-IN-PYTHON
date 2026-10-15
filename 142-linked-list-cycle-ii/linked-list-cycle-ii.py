@@ -8,9 +8,12 @@ class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         temp = head
         seen = []
+        
         while temp:
+            
             if temp in seen:
                 return temp
             seen.append(temp)
             temp = temp.next
+        
         return None
