@@ -1,6 +1,5 @@
 class Solution:
     def validPalindrome(self, s: str) -> bool:
-
         def isPalindrome(left, right):
             while left < right:
                 if s[left] != s[right]:
