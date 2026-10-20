@@ -19,7 +19,6 @@ class Solution:
             i += 1
 
         num *= sign
-
         num = max(-2**31, min(num, 2**31 - 1))
 
         return num
