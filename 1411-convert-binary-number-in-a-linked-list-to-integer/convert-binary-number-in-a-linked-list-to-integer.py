@@ -7,11 +7,9 @@ class Solution:
     def getDecimalValue(self, head: ListNode | None) -> int:
         num = 0
         curr = head
-
         while curr:
             num = num * 2 + curr.val
             curr = curr.next
-
         return num
 
         
