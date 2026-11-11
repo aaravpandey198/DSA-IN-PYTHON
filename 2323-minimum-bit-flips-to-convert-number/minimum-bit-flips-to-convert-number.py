@@ -3,7 +3,7 @@ class Solution:
         ans = start ^ goal
         count = 0
 
-        for i in range(31):
+        for i in range(32):
             if ans & (1 << i):
                 count += 1
 
